@@ -7,11 +7,24 @@
       {{ .Site.Title }}
       {{ end }}
     </title>
+    
+    {{ $style := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
+    
+    {{ $js := resources.Get "ts/main.ts" | js.Build }}
+    <script src="{{ $js.Permalink }}" defer></script>
   </head>
   <body>
+    {{ partial "menu.html" . }}
+    
+    <main>
     {{ block "main" . }}
     {{ end }}
+    </main>
+    <footer>
     {{ block "footer" . }}
     {{ end }}
+    </footer>
+    
   </body>
 </html>
