@@ -1,11 +1,22 @@
-html {
+:root {
     color-scheme: light dark;
+    
+    --light-bg: ghostwhite;
+    --light-color:  hsl(232, 23%, 18%);
+    --light-highlight: #2a85e8;
+  
+    --dark-bg: hsl(232, 23%, 18%);
+    --dark-color: ghostwhite;
+    --dark-highlight: hsl(210, 100%, 73%);
 }
 
 body {
     font-family: system-ui;
     font-size: 1.25rem;
     line-height: 1.5;
+    
+    color: light-dark(var(--light-color), var(--dark-color));
+    background-color: light-dark(var(--light-bg), var(--dark-bg));
 }
 
 img,
@@ -51,5 +62,36 @@ nav#main-menu {
         li a:hover {
             text-decoration: underline;
         }
+    }
+}
+
+ul.list-of-summaries {
+   padding: 1rem;
+}
+
+ul.list-of-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+        display: inline-block;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border-right: 1px solid;
+        line-height: 1.4rem;
+    }
+    
+    li:first-child {
+        padding-left: 0;
+    }
+    
+    li a {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    li a:hover {
+        text-decoration: underline;
     }
 }

@@ -1,6 +1,7 @@
 ---
 title: "First canvas-sketch trial"
 date: 2025-10-09
+summary: "A brief overview of canvas-sketch and a minimal example."
 ---
 
 Today I tried _canvas-sketch_ for the first time.  

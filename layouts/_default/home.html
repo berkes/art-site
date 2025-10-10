@@ -1,4 +1,19 @@
 {{ define "main" }}
-  {{ .Content }}
-  <h1>There is no place like home</h1>
+    <h1>{{ .Site.Title }}</h1>
+    
+    <p>I am Bèr Kessels, and this is my portfolio of <em>Generative Art</em> projects.</p>
+    
+    <h2>Select work</h2>
+    {{ partial "select-work.html" . }}
+    
+    <h2>Links</h2>
+    {{ partial "links.html" . }}
+    
+    <h2>Notes</h2>
+    {{ partial "notes.html" . }}
+    
+    <h2>Contact</h2>
+    <p>For collaboration, ideas, artwork enquiries, and commissions, please contact me via email at <a href="mailto:ber@berk.es">ber@berk.es</a>.</p>
+    
+    {{ .Content }}
 {{ end }}

@@ -1,0 +1,9 @@
+<ul class="list-of-summaries">
+    {{ range first 5 (where site.RegularPages "Section" "notes") }}
+    <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <small>{{ .Date.Format "02 Jan 2006" }}</small>
+        <span>{{ .Summary }}</span>
+    </li>
+    {{ end }}
+</ul>
