@@ -1,0 +1,20 @@
+FROM joseluisq/static-web-server:2
+
+# Set the server root directory to where we'll copy our built site
+ENV SERVER_ROOT="/app"
+
+# Set fallback page for client-side routing
+ENV SERVER_FALLBACK_PAGE="/app/404.html"
+
+# Set custom error pages
+ENV SERVER_ERROR_PAGE_404="/app/404.html"
+ENV SERVER_ERROR_PAGE_50X="/app/50x.html"
+
+# Create the app directory
+WORKDIR /app
+
+# Copy the built site from the artifacts
+COPY ./site-content/ /app/
+
+# The image exposes port 80 by default
+# All other configuration will be done through environment variables

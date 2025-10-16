@@ -3,6 +3,8 @@ name: Build Hugo Site
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   # Allow manual triggering
   workflow_dispatch:
 
