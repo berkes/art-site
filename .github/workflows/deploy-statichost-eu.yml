@@ -1,0 +1,29 @@
+# Deploy to Statichost.eu
+# Currently static host does not allow us to push our own static site artifacts to their
+# service, so we must rely on them to build and deploy our site.
+# To do this, we need to call a webhook.
+# We chose to not use webhooks in github, but instead use actions so that we can control
+# and extend deployment process in more detail.
+name: Deploy to Statichost.eu
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'  # Matches semver tags like v1.0.0, v1.2.3-beta, etc.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Extract version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Trigger deploy on Statichost.eu
+        run: |
+          echo "Deploying version ${{ steps.get_version.outputs.VERSION }} to Statichost.eu"
+          curl -X POST https://builder.statichost.eu/berk-es \
+            -H "Content-Type: application/json"
