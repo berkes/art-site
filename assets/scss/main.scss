@@ -86,12 +86,8 @@ ul.list-of-links {
         padding-left: 0;
     }
     
-    li a {
-        text-decoration: none;
-        color: inherit;
-    }
-    
-    li a:hover {
-        text-decoration: underline;
+    li:last-child {
+        padding-right: 0;
+        border-right: none;
     }
 }
