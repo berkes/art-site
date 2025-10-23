@@ -38,14 +38,18 @@ main {
 }
 
 nav#main-menu {
-    max-width: #{ 'min(70ch, 100% - 4rem)' };
+    max-width: #{ 'min(70ch - 2rem, 100% - 6rem)' };
     margin-inline: auto;
     
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-
+    
+    background-image: url('/images/header_pretty.png'), url('/images/header_pretty.png');
+    background-position: top left, bottom left;
+    background-repeat: repeat-x, repeat-x;
+    
     ul {
         list-style: none;
         margin: 0;
@@ -62,11 +66,24 @@ nav#main-menu {
         
         li a {
             text-decoration: none;
-            color: inherit;
+            
+            padding: 0 33px;
+            color: light-dark(var(--light-color), var(--dark-color));
+            
+            .point-icon {
+                visibility: hidden;
+                width: 2rem;
+                height: 1rem;
+                display: inline-block;
+            }
         }
         
+        li a.active,
         li a:hover {
-            text-decoration: underline;
+            .point-icon {
+                visibility: visible;
+                color: light-dark(var(--light-color), var(--dark-color));
+            }
         }
     }
 }
