@@ -1,0 +1,45 @@
+/* Font definitions */
+
+/* Arvo Font */
+@font-face {
+  font-family: 'Arvo';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/arvo/Arvo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Arvo';
+  font-style: italic;
+  font-weight: 400;
+  src: url('/fonts/arvo/Arvo-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Arvo';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/arvo/Arvo-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Arvo';
+  font-style: italic;
+  font-weight: 700;
+  src: url('/fonts/arvo/Arvo-BoldItalic.ttf') format('truetype');
+}
+
+/* Sorts Mill Goudy Font */
+@font-face {
+  font-family: 'OFL Sorts Mill Goudy TT';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/sorts-mill-goudy/GoudyStM.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'OFL Sorts Mill Goudy TT';
+  font-style: italic;
+  font-weight: 400;
+  src: url('/fonts/sorts-mill-goudy/GoudyStM-Italic.otf') format('opentype');
+}

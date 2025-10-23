@@ -1,3 +1,5 @@
+@import "fonts";
+
 :root {
     color-scheme: light dark;
     
@@ -11,12 +13,16 @@
 }
 
 body {
-    font-family: system-ui;
-    font-size: 1.25rem;
+    font-family: 'Arvo', serif;
+    font-size: 1.0rem;
     line-height: 1.5;
     
     color: light-dark(var(--light-color), var(--dark-color));
     background-color: light-dark(var(--light-bg), var(--dark-bg));
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "OFL Sorts Mill Goudy TT", serif;
 }
 
 img,
