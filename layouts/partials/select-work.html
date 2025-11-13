@@ -1,9 +1,22 @@
-<ul>
-    {{ range first 5 (where site.RegularPages "Section" "projects") }}
-    <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        <small>{{ .Date.Format "02 Jan 2006" }}</small>
-        <span>{{ .Summary }}</span>
-    </li>
-    {{ end }}
-</ul>
+<div class="work-carousel">
+    <button class="nav prev" aria-label="Previous work">&lt;</button>
+    <ul>
+        {{ range first 5 (where site.RegularPages "Section" "work") }}
+        <li class="slide">
+            <div class="frame-outer">
+                <div class="frame-inner">
+                    {{ $image := .Resources.Get .Params.image }}
+                    <a href="{{ .RelPermalink }}">
+                      <img src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="Screenshot of {{ .Title }}">
+                    </a>
+                </div>
+            </div>
+            <div class="info-card">
+                <a class="title-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <span class="summary">{{ .Summary }}</span>
+            </div>
+        </li>
+        {{ end }}
+    </ul>
+    <button class="nav next" aria-label="Next work">&gt;</button>
+</div>

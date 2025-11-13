@@ -10,6 +10,8 @@
     --dark-bg: hsl(232, 23%, 18%);
     --dark-color: ghostwhite;
     --dark-highlight: hsl(210, 100%, 73%);
+    
+    --frame-width: 32px;
 }
 
 body {
@@ -88,8 +90,159 @@ nav#main-menu {
     }
 }
 
-ul.list-of-summaries {
-   padding: 0 1rem;
+.work-carousel {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+    
+    width: calc(100% + 4rem);
+    aspect-ratio: 1/1.3;
+    max-height: 980px;
+    left: -2rem;
+    
+    .nav {
+        flex-shrink: 0;
+        background: none;
+        border: none;
+        color: light-dark(var(--light-color), var(--dark-color));
+        font-size: 2rem;
+        cursor: pointer;
+        padding: 0;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        position: relative;
+        width: 100%;
+        flex: 1;
+
+        overflow: hidden;
+        
+        li.slide {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            padding: 0;
+            margin: 0;
+            top: 0;
+            left: 0;
+            
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            
+            // Default: hide slides that don't have a position class
+            opacity: 0;
+            visibility: hidden;
+            
+            // Disable transitions during initialization or when being repositioned without animation
+            &.no-transition {
+                transition: none;
+            }
+            
+            &.active {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+                z-index: 2;
+                position: relative;
+            }
+            &.left {
+                transform: translateX(calc(-100% - 2rem));
+                opacity: 1;
+                visibility: visible;
+                z-index: 1;
+            }
+            &.right {
+                transform: translateX(calc(100% + 2rem));
+                opacity: 1;
+                visibility: visible;
+                z-index: 1;
+            }
+            &.far-left {
+                transform: translateX(calc(-200% - 4rem));
+                opacity: 0;
+                visibility: hidden;
+                z-index: 0;
+            }
+            &.far-right {
+                transform: translateX(calc(200% + 4rem));
+                opacity: 0;
+                visibility: hidden;
+                z-index: 0;
+            }
+        }
+       
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .frame-outer {
+            padding: var(--frame-width);
+            background: light-dark(var(--light-color), var(--dark-color));
+            box-shadow: 
+            0 4px 8px rgba(0,0,0,0.4),
+            0 8px 16px rgba(0,0,0,0.15);
+            margin: 2rem auto;
+            max-width: fit-content;
+            position: relative;
+        }
+
+        .frame-inner {
+            background: light-dark(var(--light-bg), var(--dark-bg));
+            position: relative;
+            
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                box-shadow: 
+                inset 0 4px 8px rgba(0,0,0,0.4),
+                inset 0 8px 16px rgba(0,0,0,0.15);
+                pointer-events: none;
+            }
+        }
+
+        .info-card {
+            background: light-dark(var(--light-bg), var(--dark-bg));
+            margin: 1rem;
+            padding: 1.5rem;
+            box-shadow:  0 4px 8px rgba(0,0,0,0.2), 0 8px 16px rgba(0,0,0,0.1);
+            
+            .title-link {
+                display: block;
+                font-family: "OFL Sorts Mill Goudy TT", serif;
+                font-size: 1.25rem;
+                margin-bottom: 0.75rem;
+                color: light-dark(var(--light-color), var(--dark-color));
+                text-decoration: none;
+                
+                &:hover {
+                    color: var(--light-highlight);
+                }
+            }
+            
+            .summary {
+                display: block;
+                color: light-dark(var(--light-color), var(--dark-color));
+            }
+        }
+    }
 }
 
 ul.list-of-links {
