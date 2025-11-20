@@ -6,6 +6,9 @@
 class Carousel {
   private container: HTMLElement;
   private slideList: SlideList;
+  private touchStartX: number = 0;
+  private touchEndX: number = 0;
+  private readonly SWIPE_THRESHOLD = 50; // Minimum distance in pixels to trigger swipe
 
   /**
    * Creates a new Carousel instance.
@@ -44,6 +47,31 @@ class Carousel {
 
     prevButton?.addEventListener("click", () => this.navigateBackward());
     nextButton?.addEventListener("click", () => this.navigateForward());
+
+    this.container.addEventListener("touchstart", (e) => this.handleTouchStart(e), { passive: true });
+    this.container.addEventListener("touchend", (e) => this.handleTouchEnd(e), { passive: true });
+  }
+
+  private handleTouchStart(event: TouchEvent): void {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
+
+  private handleTouchEnd(event: TouchEvent): void {
+    this.touchEndX = event.changedTouches[0].screenX;
+    this.handleSwipe();
+  }
+
+  private handleSwipe(): void {
+    const swipeDistance = this.touchStartX - this.touchEndX;
+
+    // Swipe left (next)
+    if (swipeDistance > this.SWIPE_THRESHOLD) {
+      this.navigateForward();
+    }
+    // Swipe right (previous)
+    else if (swipeDistance < -this.SWIPE_THRESHOLD) {
+      this.navigateBackward();
+    }
   }
 
   private navigateForward(): void {
