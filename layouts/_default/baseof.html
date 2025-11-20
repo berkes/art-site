@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
     
     {{ $js := resources.Get "ts/main.ts" | js.Build }}
-    <script src="{{ $js.Permalink }}" defer></script>
+    <script src="{{ $js.RelPermalink }}" defer></script>
   </head>
   <body>
     {{ partial "menu.html" . }}

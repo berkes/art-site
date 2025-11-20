@@ -9,7 +9,7 @@
                 <div class="frame-inner">
                     {{ $image := .Resources.Get .Params.image }}
                     <a href="{{ .RelPermalink }}">
-                      <img src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="Screenshot of {{ .Title }}">
+                      <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="Screenshot of {{ .Title }}">
                     </a>
                 </div>
             </div>
