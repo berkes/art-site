@@ -1,5 +1,7 @@
 <div class="work-carousel">
-    <button class="nav prev" aria-label="Previous work">&lt;</button>
+    <button class="nav prev" aria-label="Previous work">
+        {{ readFile "static/images/backward-arrow.svg" | safeHTML }}
+    </button>
     <ul>
         {{ range first 5 (where site.RegularPages "Section" "work") }}
         <li class="slide">
@@ -18,5 +20,7 @@
         </li>
         {{ end }}
     </ul>
-    <button class="nav next" aria-label="Next work">&gt;</button>
+    <button class="nav next" aria-label="Next work">
+        {{ readFile "static/images/forward-arrow.svg" | safeHTML }}
+    </button>
 </div>
