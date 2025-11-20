@@ -1,0 +1,34 @@
+name: Deploy Hugo Site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+          extended: true
+
+      - name: Validate Hugo site can be built
+        run: hugo --minify
+
+      - name: Trigger hosting provider webhook
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          curl -fX POST https://builder.statichost.eu/berkes-art-site --no-progress-meter
