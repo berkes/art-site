@@ -248,6 +248,29 @@ nav#main-menu {
             }
         }
     }
+
+    .carousel-paginator {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 0.5rem;
+        z-index: 10;
+        pointer-events: none;
+
+        .paginator-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.3));
+            transition: background-color 0.3s ease;
+
+            &.active {
+                background-color: light-dark(rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.9));
+            }
+        }
+    }
 }
 
 ul.list-of-links {

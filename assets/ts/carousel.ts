@@ -9,6 +9,8 @@ class Carousel {
   private touchStartX: number = 0;
   private touchEndX: number = 0;
   private readonly SWIPE_THRESHOLD = 50; // Minimum distance in pixels to trigger swipe
+  private paginatorContainer: HTMLElement;
+  private paginatorDots: HTMLElement[] = [];
 
   /**
    * Creates a new Carousel instance.
@@ -48,8 +50,38 @@ class Carousel {
     prevButton?.addEventListener("click", () => this.navigateBackward());
     nextButton?.addEventListener("click", () => this.navigateForward());
 
+    // Add touch event listeners for swipe gestures
     this.container.addEventListener("touchstart", (e) => this.handleTouchStart(e), { passive: true });
     this.container.addEventListener("touchend", (e) => this.handleTouchEnd(e), { passive: true });
+
+    // Create and add paginator
+    this.paginatorContainer = this.createPaginator(slides.length);
+    this.container.appendChild(this.paginatorContainer);
+    this.updatePaginator(0);
+  }
+
+  private createPaginator(slideCount: number): HTMLElement {
+    const paginator = document.createElement("div");
+    paginator.className = "carousel-paginator";
+
+    for (let i = 0; i < slideCount; i++) {
+      const dot = document.createElement("span");
+      dot.className = "paginator-dot";
+      this.paginatorDots.push(dot);
+      paginator.appendChild(dot);
+    }
+
+    return paginator;
+  }
+
+  private updatePaginator(activeIndex: number): void {
+    this.paginatorDots.forEach((dot, index) => {
+      if (index === activeIndex) {
+        dot.classList.add("active");
+      } else {
+        dot.classList.remove("active");
+      }
+    });
   }
 
   private handleTouchStart(event: TouchEvent): void {
@@ -75,11 +107,13 @@ class Carousel {
   }
 
   private navigateForward(): void {
-    this.slideList.navigateForward();
+    const newIndex = this.slideList.navigateForward();
+    this.updatePaginator(newIndex);
   }
 
   private navigateBackward(): void {
-    this.slideList.navigateBackward();
+    const newIndex = this.slideList.navigateBackward();
+    this.updatePaginator(newIndex);
   }
 }
 
@@ -98,18 +132,18 @@ class SlideList {
     this.updateSlidePositions(false);
   }
 
-  public navigateForward(): Slide {
+  public navigateForward(): number {
     const oldCurrent = this.currentSlide;
     this.incrementCurrentIndex();
     this.updateSlidePositions(true, oldCurrent, "left");
-    return this.currentSlide;
+    return this.currentIndex;
   }
 
-  public navigateBackward(): Slide {
+  public navigateBackward(): number {
     const oldCurrent = this.currentSlide;
     this.decrementCurrentIndex();
     this.updateSlidePositions(true, oldCurrent, "right");
-    return this.currentSlide;
+    return this.currentIndex;
   }
 
   private incrementCurrentIndex(): void {
