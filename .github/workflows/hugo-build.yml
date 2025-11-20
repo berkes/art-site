@@ -45,4 +45,4 @@ jobs:
 
       - name: Deploy to object storage
         run: |
-          s3cmd sync --recursive --delete-removed --acl-public --guess-mime-type dist/* s3://art-site/
+          s3cmd sync --recursive --delete-removed --acl-public --guess-mime-type public/* s3://art-site/
