@@ -1,0 +1,6 @@
+# Docker ignore file
+# Ignore everything except what we explicitly need
+*
+!public/
+!docker/
+!.dockerignore

@@ -24,8 +24,8 @@ This is Bèr `berkes` Kessels' art experiments portfolio, featuring various gene
 
 ## Prerequisites
 
-- [Podman](https://podman.io/) (or Docker with minor modifications to Makefile)
-- Make
+- [Podman](https://podman.io/) (or Docker with minor modifications to Justfile)
+- [just](https://github.com/casey/just)
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ This is Bèr `berkes` Kessels' art experiments portfolio, featuring various gene
 Verify Hugo is available:
 
 ```bash
-make install
+just install
 ```
 
 ### Local Development
@@ -42,7 +42,7 @@ make install
 Run a local development server with live reload:
 
 ```bash
-make preview
+just preview
 ```
 
 The site will be available at `http://localhost:8080`
@@ -52,7 +52,7 @@ The site will be available at `http://localhost:8080`
 Build the static site for production:
 
 ```bash
-make build
+just build
 ```
 
 The built site will be generated in the `public/` directory.
@@ -62,7 +62,7 @@ The built site will be generated in the `public/` directory.
 Remove generated files:
 
 ```bash
-make clean
+just clean
 ```
 
 ## Project Structure
@@ -99,7 +99,7 @@ The CI pipeline will:
 ### Manual Deployment
 
 ```bash
-make deploy
+just deploy
 ```
 
 Note: This will remind you that deployment is handled by CI/CD.
