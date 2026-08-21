@@ -1,11 +1,27 @@
 {{ define "main" }}
-  <h1>Selected Work</h1>
-  <ul>
+<h1>Work</h1>
+
+<p>The work that I am <s>proud about</s> confident to show you. Each work has a detailed page describing the background and code.</p>
+
+<ul class="gallery">
     {{ range .Pages.ByDate.Reverse }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        <small>{{ .Date.Format "2006-01-02" }}</small>
-      </li>
+    <li class="framed">
+        <div class="frame-outer">
+            <div class="frame-inner">
+                {{ $image := .Resources.Get .Params.image }}
+                <a href="{{ .RelPermalink }}">
+                    <img
+                        src="{{ $image.RelPermalink }}"
+                        alt="Screenshot of {{ .Title }}"
+                    />
+                </a>
+            </div>
+        </div>
+        <div class="info-card">
+            <a class="title-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <span class="summary">{{ .Summary }}</span>
+        </div>
+    </li>
     {{ end }}
-  </ul>
+</ul>
 {{ end }}

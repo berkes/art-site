@@ -23,7 +23,7 @@
     {{ $js := resources.Get "ts/main.ts" | js.Build }}
     <script src="{{ $js.RelPermalink }}" defer></script>
   </head>
-  <body>
+  <body class="section-{{ .Section }} kind-{{ .Kind }}">
     {{ partial "menu.html" . }}
     
     <main>

@@ -4,7 +4,7 @@
     </button>
     <ul>
         {{ range first 5 (where site.RegularPages "Section" "work") }}
-        <li class="slide">
+        <li class="slide framed">
             <div class="frame-outer">
                 <div class="frame-inner">
                     {{ $image := .Resources.Get .Params.image }}

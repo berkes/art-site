@@ -1,11 +1,14 @@
 {{ define "main" }}
   <h1>Notes</h1>
-  <ul>
-    {{ range .Pages.ByDate.Reverse }}
+  <ul class="list-of-summaries">
+      {{ range .Pages.ByDate.Reverse }}
       <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        <small>{{ .Date.Format "2006-01-02" }}</small>
+          <span class="bullet">{{ .Date.Format "02 Jan 2006" }}</span>
+          <span class="content">
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a> –
+              <span>{{ .Summary }}</span>
+          </span>
       </li>
-    {{ end }}
+      {{ end }}
   </ul>
 {{ end }}
