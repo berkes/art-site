@@ -31,6 +31,16 @@ h5,
 h6 {
     font-family: "OFL Sorts Mill Goudy TT", serif;
 }
+h1 {
+    font-size: 1.4rem;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 1.2rem;
+}
 
 img,
 svg,
@@ -39,9 +49,26 @@ video {
     display: block;
 }
 
+a {
+    color: light-dark(var(--light-highlight), var(--dark-highlight));
+    text-decoration: none;
+}
+a:visited {
+    color: light-dark(var(--light-highlight), var(--dark-highlight));
+    filter: brightness(80%);
+}
+
+em {
+    font-style: oblique 6deg;
+}
+
 main {
     max-width: #{"min(70ch, 100% - 4rem)"};
     margin-inline: auto;
+}
+
+.home-section {
+    padding: 2rem 0;
 }
 
 nav#main-menu {
@@ -306,5 +333,20 @@ ul.list-of-links {
     li:last-child {
         padding-right: 0;
         border-right: none;
+    }
+}
+
+ul.list-of-summaries {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+
+    li {
+        display: flex;
+
+        .bullet {
+            flex-shrink: 0;
+            padding-right: 2rem;
+        }
     }
 }
