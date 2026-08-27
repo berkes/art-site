@@ -33,7 +33,7 @@ class Carousel {
     navNextSelector: string,
   ) {
     this.container = document.querySelector(selector);
-    if (!this.container) throw new Error(`Element not found: ${selector}`);
+    if (!this.container) return null;
 
     // Select all slide elements that are children of the container
     const slides = Array.from(this.container.querySelectorAll(slideSelector))
