@@ -1,26 +1,33 @@
 {{ define "main" }}
-    <div class="home-section">
-        <h1>{{ .Site.Title }}</h1>
+<div class="home-section">
+    <h1>{{ .Site.Title }}</h1>
 
-        <p>I am Bèr Kessels, a <em>Creative Coder</em> and this is my portfolio of <em>Generative Art</em> projects.</p>
-    </div>
+    <p class="about-text">
+        I am Bèr Kessels, a <em>Creative Coder</em> and I make
+        <em>Generative Art</em>. I build hard- and software which makes visual
+        works, autonomously. Through maths, algorithms, randomness, input from
+        people, or data. Artificial, but not intelligent. My primary goal is to
+        have fun - <em>the process is the goal</em>.
+    </p>
+</div>
 
-    <div class="home-section">
+<div class="home-section">
     <h2>Selected work</h2>
     {{ partial "select-work.html" . }}
-    </div>
+</div>
 
-    {{ .Content }}
-
-    <div class="home-section">
-
+<div class="home-section">
     <h2>Latest notes</h2>
     {{ partial "notes.html" . }}
+</div>
 
-    <div class="home-section">
+<div class="home-section">
     {{ partial "links.html" . }}
 
-    <p>For collaboration, ideas, artwork enquiries, and commissions, please contact me via email at <a href="mailto:ber@berk.es">ber@berk.es</a>.</p>
-    </div>
+    <p>
+        For collaboration, ideas, artwork enquiries, and commissions, please
+        contact me via email at <a href="mailto:ber@berk.es">ber@berk.es</a>.
+    </p>
+</div>
 
 {{ end }}

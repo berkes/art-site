@@ -1,26 +1,11 @@
-<div class="work-carousel">
-    <button class="nav prev" aria-label="Previous work">
-        {{ readFile "static/images/backward-arrow.svg" | safeHTML }}
-    </button>
-    <ul>
-        {{ range first 5 (where site.RegularPages "Section" "work") }}
-        <li class="slide framed">
-            <div class="frame-outer">
-                <div class="frame-inner">
-                    {{ $image := .Resources.Get .Params.image }}
-                    <a href="{{ .RelPermalink }}">
-                      <img src="{{ $image.RelPermalink }}" alt="Screenshot of {{ .Title }}">
-                    </a>
-                </div>
-            </div>
-            <div class="info-card">
-                <a class="title-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
-                <span class="summary">{{ .Summary }}</span>
-            </div>
-        </li>
-        {{ end }}
-    </ul>
-    <button class="nav next" aria-label="Next work">
-        {{ readFile "static/images/forward-arrow.svg" | safeHTML }}
-    </button>
-</div>
+<ul class="gallery">
+    {{ range (where site.RegularPages "Section" "work") }}
+    <li>
+        {{ $image := .Resources.Get .Params.image }}
+        <a href="{{ .RelPermalink }}">
+            <img src="{{ $image.RelPermalink }}" alt="Screenshot of {{ .Title }}">
+        </a>
+        <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+    </li>
+    {{ end }}
+</ul>
