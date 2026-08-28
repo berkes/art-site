@@ -11,3 +11,6 @@ noJSConfigInAssets = true
       [markup.goldmark.parser.attribute]
         block = true
         title = true
+  [markup.highlight]
+    style = 'monokai'
+    linenos = true
