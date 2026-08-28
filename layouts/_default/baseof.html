@@ -26,8 +26,8 @@
   <body class="section-{{ .Section }} kind-{{ .Kind }}">
     <header>
         <a href="/" class="logo-link" aria-label="Home">
-            <img src="{{ "/images/logo-dark.png" | absURL }}" alt="Logo with handdrawn black and white tattoo letters forming the words Bèr `berkes` Kessels" class="logo logo-dark">
-            <img src="{{ "/images/logo-light.png" | absURL }}" alt="Logo with handdrawn black and white tattoo letters forming the words Bèr `berkes` Kessels" class="logo logo-light">
+            <img src="{{ "/images/logo-dark.png" | relURL }}" alt="Logo with handdrawn black and white tattoo letters forming the words Bèr `berkes` Kessels" class="logo logo-dark">
+            <img src="{{ "/images/logo-light.png" | relURL }}" alt="Logo with handdrawn black and white tattoo letters forming the words Bèr `berkes` Kessels" class="logo logo-light">
         </a>
         {{ partial "menu.html" . }}
     </header>

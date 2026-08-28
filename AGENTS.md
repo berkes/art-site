@@ -33,10 +33,13 @@ Prefer simple, clean solutions. Simple is better. Avoid libraries, frameworks or
 * Do use just, fall back on docker, to run tasks and services.
 * Do use skills, tools and MCPs over bash commands
 * Do use simple, bash oneliners for exceptional tasks
+* Do run a build with `just build` and then check the rendered HTML and/or other assets under `./public` to verify the HTML
+* Do run a build to check what HTML structure is rendered for SCSS and TS setups
 
 * Don't overwrite changes, as they may be made by the user or other agents. Stop and ask.
 * Don't create scripts to perform tasks, except when explicitly told to do, or allowed to do.
 * Don't overengineer. Simple is always better. Simple is not always easier.
+* Don't put CSS and JS inside templates. These belong under assets only.
 
 ## SCSS
 
