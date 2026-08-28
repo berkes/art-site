@@ -3,7 +3,7 @@ title: "BirdSeed"
 date: 2025-04-23
 summary: "Generative bird silhouettes with randomized anatomical variations"
 params:
-  image: birdseed_5.png
+  image: birdseed_3.png
 ---
 
 {{< video src=birdseed.mp4 >}}

@@ -1,35 +1,25 @@
-<hr class="double muted"/>
 <nav id="main-menu">
-    <div class="menu-container">
-        <button id="menu-toggle" class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu-items">
-            {{ readFile "static/images/hamburger.svg" | safeHTML }}
-        </button>
-        <ul id="menu-items">
-            <li>
-                <a href="/">
-                    <span class="point-icon" >{{ readFile "static/images/pointinghand.svg" | safeHTML }}</span>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="/work">
-                    <span class="point-icon">{{ readFile "static/images/pointinghand.svg" | safeHTML }}</span>
-                    Work
-                </a>
-            </li>
-            <li>
-                <a href="/about">
-                    <span class="point-icon" >{{ readFile "static/images/pointinghand.svg" | safeHTML }}</span>
-                    About
-                </a>
-            </li>
-            <li>
-                <a href="/notes">
-                    <span class="point-icon">{{ readFile "static/images/pointinghand.svg" | safeHTML }}</span>
-                    Notes
-                </a>
-            </li>
-        </ul>
-    </div>
+    <button
+        id="menu-toggle"
+        class="hamburger"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="menu-items"
+    >
+        {{ readFile "static/images/hamburger.svg" | safeHTML }}
+    </button>
+    <ul id="menu-items">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/work">Work</a>
+        </li>
+        <li>
+            <a href="/about">About</a>
+        </li>
+        <li>
+            <a href="/notes">Notes</a>
+        </li>
+    </ul>
 </nav>
-<hr class="double muted"/>

@@ -4,3 +4,10 @@ title = "Bèr `berkes` Kessels' art experiments"
 
 [build]
 noJSConfigInAssets = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+        title = true

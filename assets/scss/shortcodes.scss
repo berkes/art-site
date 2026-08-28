@@ -1,0 +1,60 @@
+// ======================================= //
+// Shortcodes
+// ======================================= //
+
+// Float container shortcode styles
+.float-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin: 0 1em 1em 0;
+
+    // Default to row layout (horizontal)
+    flex-direction: row;
+    align-items: flex-start;
+
+    &.position-left {
+        float: left;
+    }
+
+    &.position-right {
+        float: right;
+        margin: 0 0 1em 1em;
+    }
+
+    &.size-small {
+        max-width: 12.5%;
+    }
+
+    &.size-medium {
+        max-width: 25%;
+    }
+
+    &.size-large {
+        max-width: 50%;
+    }
+
+    // Images as flex items - share space horizontally
+    > img {
+        flex: 1;
+        min-width: 0;
+        max-width: none;
+        height: auto;
+    }
+
+    // Column layout - images stack vertically
+    &.layout-column {
+        flex-direction: column;
+        
+        > img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+    }
+}
+
+// Clearfix shortcode
+.clearfix {
+    clear: both;
+}

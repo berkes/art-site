@@ -2,30 +2,36 @@
 <html>
   <head>
     <meta charset="utf-8">
-        
+
     <meta name="color-scheme" content="dark light" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        
+
     <meta name="Author" content="Bèr Kessels">
     <meta name="Description" content="A personal website showcasing my work and interests.">
     <meta name="Keywords" content="Bèr Kessels, portfolio, generative art, art, animation, games">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
     <title>
       {{ block "title" . }}
       {{ .Site.Title }}
       {{ end }}
     </title>
-    
+
     {{ $style := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
-    
+
     {{ $js := resources.Get "ts/main.ts" | js.Build }}
     <script src="{{ $js.RelPermalink }}" defer></script>
   </head>
   <body class="section-{{ .Section }} kind-{{ .Kind }}">
-    {{ partial "menu.html" . }}
-    
+    <header>
+        <a href="/" class="logo-link" aria-label="Home">
+            <img src="{{ "/images/logo-dark.png" | relURL }}" alt="Logo with handdrawn black and white tattoo letters forming the words Bèr `berkes` Kessels" class="logo logo-dark">
+            <img src="{{ "/images/logo-light.png" | relURL }}" alt="Logo with handdrawn black and white tattoo letters forming the words Bèr `berkes` Kessels" class="logo logo-light">
+        </a>
+        {{ partial "menu.html" . }}
+    </header>
+
     <main>
     {{ block "main" . }}
     {{ end }}
@@ -34,6 +40,6 @@
     {{ block "footer" . }}
     {{ end }}
     </footer>
-    
+
   </body>
 </html>

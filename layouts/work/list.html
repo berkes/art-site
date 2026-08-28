@@ -5,22 +5,12 @@
 
 <ul class="gallery">
     {{ range .Pages.ByDate.Reverse }}
-    <li class="framed">
-        <div class="frame-outer">
-            <div class="frame-inner">
-                {{ $image := .Resources.Get .Params.image }}
-                <a href="{{ .RelPermalink }}">
-                    <img
-                        src="{{ $image.RelPermalink }}"
-                        alt="Screenshot of {{ .Title }}"
-                    />
-                </a>
-            </div>
-        </div>
-        <div class="info-card">
-            <a class="title-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
-            <span class="summary">{{ .Summary }}</span>
-        </div>
+    <li>
+        {{ $image := .Resources.Get .Params.image }}
+        <a href="{{ .RelPermalink }}">
+            <img src="{{ $image.RelPermalink }}" alt="Screenshot of {{ .Title }}">
+        </a>
+        <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
     </li>
     {{ end }}
 </ul>

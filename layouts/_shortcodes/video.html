@@ -1,3 +1,11 @@
-{{ with .Get "src" }}
-  <video src="{{ . }}" controls></video>
-{{ end }}
+{{ $src := .Get "src" }}
+{{ $position := .Get "position" | default "none" }}
+{{ $size := .Get "size" | default "medium" }}
+
+{{ $classes := slice "float-container" }}
+{{ $classes = $classes | append (printf "position-%s" $position) }}
+{{ $classes = $classes | append (printf "size-%s" $size) }}
+
+<video src="{{ $src }}" controls class="{{ delimit $classes " " }}">
+
+</video>

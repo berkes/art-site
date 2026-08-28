@@ -1,7 +1,24 @@
 {{ define "main" }}
-  <article>
-    <h1>{{ .Title }}</h1>
-    <small>{{ .Date.Format "2006-01-02" }}</small>
-    {{ .Content }}
-  </article>
+<article class="work-page {{ .File.ContentBaseName }}">
+    <div class="metadata">
+        {{ $image := .Params.image | default "" }} {{ if $image }} {{ $img :=
+        .Resources.Get $image }} {{ if $img }}
+        <img
+            src="{{ $img.RelPermalink }}"
+            alt="{{ .Title }}"
+            class="marked-image"
+        />
+        {{ end }} {{ end }}
+        <h1>{{ .Title }}</h1>
+        {{ with .GetTerms "tags" }}
+          <ul class="tags">
+            {{ range . }}
+              <li class="tag"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+            {{ end }}
+          </ul>
+        {{ end }}
+        <div class="work-date">{{ .Date.Format "January - 2006" }}</div>
+    </div>
+    <div class="content">{{ .Content }}</div>
+</article>
 {{ end }}
