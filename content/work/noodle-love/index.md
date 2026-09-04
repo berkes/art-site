@@ -29,7 +29,7 @@ This led me to tiles drawn by "hand", either in a vector drawing program, or by 
 Additionally, the code places a special tile in the center. This tile also connects to all other tiles, but is larger. It shows a heart shape.
 This makes the image look like a maze in which we can find the love, if we look carefully.
 
-
+{{< clear >}}
 {{< video src=wrapping-paper.mp4 position="right">}}
 
 By improving the output, I can generate extremely large patterns that can themselves be tiled. Allowing me to order wrapping paper from it.
