@@ -56,4 +56,6 @@ By improving the output, I can generate extremely large patterns that can themse
 - [Processing version](https://github.com/berkes/art/tree/main/processing/NoodleLove)
 - [Vormen version](https://github.com/berkes/art/tree/main/vormen/noodle_love.ts)
 
+![Framed](noodle_love_framed.jpg)
+
 ![Large version](large.png)
