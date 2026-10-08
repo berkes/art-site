@@ -10,7 +10,7 @@ params:
   image: noodle_love.png
 ---
 
-Noodle Love is a generative art piece that creates large-format compositions through algorithmic tile placement and rotation.
+Noodle Love creates large-format compositions by placing and rotating simple tiles on a large grid.
 
 {{< f position="right" size="medium" >}}
  ![First version](maze-ish-round.png)
@@ -30,66 +30,30 @@ Additionally, the code places a special tile in the center. This tile also conne
 This makes the image look like a maze in which we can find the love, if we look carefully.
 
 {{< clear >}}
-{{< video src=wrapping-paper.mp4 position="right">}}
+{{< video src=wrapping-paper.mp4 position="right" size="medium" controls=false mute=true loop=true autoplay=true >}}
 
 By improving the output, I can generate extremely large patterns that can themselves be tiled. Allowing me to order wrapping paper from it.
 
-
-{{< clear >}}
 ## How does it work?
 
-1. All textures connect to other textures regardless of their rotation.
-1. The algorithm divides the canvas into tiles.
-1. Each tile receives one of the hand-drawn textures and a rotation (0°, 90°, 180°, or 270°).
-1. Rather than random placement, the system uses Perlin noise to determine both texture selection and rotation, creating smooth transitions and organic flow across the composition.
+1. Divide the canvas into a grid
+1. Each grid cell receives one of the tiles and a rotation (0°, 90°, 180°, or 270°), randomly picked.
 1. Find a center corner and place the center tile there, over any tiles that may sit there.
-
-```java
-void draw() {
-  tiles.clear();
-  float tiles_x = width / TILE_SIZE + 1;
-  float tiles_y = height / TILE_SIZE + 1;
-  // Fill the grid with random tiles and give them random rotation
-  for (int x = 0; x < tiles_x; x++) {
-    for (int y = 0; y < tiles_y; y++) {
-      PVector pos = new PVector(x * TILE_SIZE, y * TILE_SIZE);
-      float rotation = generateRotation(x, y);
-      int texture_idx = generateTextureIdx(x, y);
-      Tile t = new Tile(pos, rotation, texture_idx);
-      tiles.add(t);
-    }
-  }
-
-  // Draw the tiles
-  background(0);
-  for (Tile t : tiles) {
-    t.draw();
-  }
-
-  // Find a center corner of the grid of tiles
-  PVector actual_center = new PVector(width/2, height/2);
-  PVector center_tile_corner = null;
-  for (Tile t : tiles) {
-    if (t.pos.dist(actual_center) < TILE_SIZE) {
-      center_tile_corner = t.pos;
-      break;
-    }
-  }
-  if (center_tile_corner == null) {
-    throw new Error("Could not place a center tile");
-  }
-}
-```
 
 ## Tools
 
-* Processing for the rendering engine
-* Perlin noise algorithm for texture and rotation distribution
-* Custom hand-drawn tile textures in SVG
-* Designed for large-format output (200.6cm × 70.6cm at 300 DPI)
+* [Vormen](https://github.com/berkes/vormen) and [svg.js](https://svgjs.dev/docs/3.0/) for the code
+* [Inkscape](https://inkscape.org/) for the tiles
+* [Processing](https://processing.org/) for the background
+
+## Tools
+
+* [Vormen](https://github.com/berkes/vormen) and [svg.js](https://svgjs.dev/docs/3.0/) for the code
+* [Inkscape](https://inkscape.org/) for the tiles
 
 ## Sourcecode and history
 
 - [Processing version](https://github.com/berkes/art/tree/main/processing/NoodleLove)
+- [Vormen version](https://github.com/berkes/art/tree/main/vormen/noodle_love.ts)
 
 ![Large version](large.png)

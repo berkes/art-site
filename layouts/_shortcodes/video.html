@@ -1,4 +1,8 @@
 {{ $src := .Get "src" }}
+{{ $controls := .Get "controls" | default "true" }}
+{{ $loop := .Get "loop" | default "false" }}
+{{ $muted := .Get "muted" | default "false" }}
+{{ $autoplay := .Get "autoplay" | default "false" }}
 {{ $position := .Get "position" | default "none" }}
 {{ $size := .Get "size" | default "medium" }}
 
@@ -6,6 +10,6 @@
 {{ $classes = $classes | append (printf "position-%s" $position) }}
 {{ $classes = $classes | append (printf "size-%s" $size) }}
 
-<video src="{{ $src }}" controls class="{{ delimit $classes " " }}">
+<video src="{{ $src }}" {{ if $autoplay }}autoplay{{ end }} {{ if $controls }}controls{{ end }} {{ if $loop }}loop{{ end }} {{ if $muted }}muted{{ end }} class="{{ delimit $classes " " }}">
 
 </video>
