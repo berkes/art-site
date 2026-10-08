@@ -453,6 +453,11 @@ article.work-page {
     article.work-page {
         flex-direction: column;
 
+        .content {
+            flex: 1 1 100%;
+            width: 100%;
+        }
+
         .left-col,
         .right-col {
             flex: 0 0 100%;

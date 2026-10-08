@@ -45,7 +45,7 @@
     // Column layout - images stack vertically
     &.layout-column {
         flex-direction: column;
-        
+
         > img {
             display: block;
             max-width: 100%;
@@ -57,4 +57,40 @@
 // Clearfix shortcode
 .clearfix {
     clear: both;
+}
+
+@media (max-width: 768px) {
+    .float-container.size-small,
+    .float-container.size-medium,
+    .float-container.size-large,
+    .float-container.position-left,
+    .float-container.position-right {
+        float: none;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 0 1em 0;
+    }
+
+    .float-container.layout-row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .float-container {
+        display: block;
+        margin: 0 0 1em 0;
+    }
+
+    .float-container > img,
+    .float-container > video {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .clearfix {
+        display: none;
+    }
 }
