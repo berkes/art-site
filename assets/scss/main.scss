@@ -1,3 +1,7 @@
+// Width below which the mobile layout kicks in.
+// Media queries cannot use CSS variables, hence an SCSS variable.
+$mobile-breakpoint: 768px;
+
 @import "fonts";
 @import "shortcodes";
 
@@ -18,6 +22,7 @@
 
     --gap: 4rem;
     --gap-s: 1rem;
+    --content-width: 1280px;
 }
 
 body {
@@ -79,20 +84,21 @@ em {
 // Layout
 // ======================================= //
 
-header {
+header,
+main {
+    width: var(--content-width);
     max-width: 100%;
     margin-inline: auto;
-    margin: 0 20rem;
+}
 
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 main {
-    max-width: 100%;
-    margin-inline: auto;
-    margin: var(--gap) 20rem;
+    margin-block: var(--gap);
 }
 
 
@@ -103,8 +109,7 @@ main {
 
 .logo {
     display: block;
-    max-width: 100%;
-    width: 750px;
+    width: 100%;
     height: auto;
 }
 
@@ -133,7 +138,7 @@ main {
 }
 
 .about-text {
-    width: 750px;
+    width: 100%;
     margin: 0;
 }
 
@@ -291,7 +296,7 @@ ul.gallery {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $mobile-breakpoint) {
     ul.gallery {
         flex-direction: column;
         gap: var(--gap-s)
@@ -320,10 +325,6 @@ ul.gallery {
         width: auto;
         max-width: 100%;
         margin: 0 auto;
-    }
-
-    .about-text {
-        width: 100%;
     }
 
     // Hamburger menu for mobile
@@ -449,7 +450,7 @@ article.work-page {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $mobile-breakpoint) {
     article.work-page {
         flex-direction: column;
 

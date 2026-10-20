@@ -59,7 +59,7 @@
     clear: both;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $mobile-breakpoint) {
     .float-container.size-small,
     .float-container.size-medium,
     .float-container.size-large,
